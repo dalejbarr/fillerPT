@@ -106,8 +106,3 @@ Information about each 'test' trial, including condition information for the two
 
 - =ClickMs= is measured relative to the onset of the trial (0 ms)
 
-* TODO Scripts 																										 :noexport:
-
-#+BEGIN_SRC R :tangle scripts/RT.R
-  trials <- read.csv("data/trials.csv")
-#+END_SRC
