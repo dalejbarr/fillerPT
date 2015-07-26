@@ -1,0 +1,113 @@
+#+TITLE: Data archive fillerPT
+
+* Background
+
+This archive contains raw data for the following published study:
+
+Barr, D. J., and Seyfeddinipur, M. (2010).  The role of fillers in listener attributions for disfluency.  /Language and Cognitive Processes/, /25/, 441--455.
+
+* Descriptions
+
+| Directory  | Contents                                                  |
+|------------+-----------------------------------------------------------|
+| =bin/=     | WinXP executable (*.exe) and associated files             |
+| =data/=    | Tables describing experiment structure and collected data |
+| =bmps/=    | Bitmap images used as stimuli                             |
+| =wavs/=    | Audio files used as stimuli                               |
+| =docs/=    | Documents (participant instructions)                      |
+| =scripts/= | R Scripts for reproducing analyses                        |
+
+** Code books for files in =data= directory
+
+All files in the =data/= directory have ASCII encoding.
+
+*** File =data/list_info.csv=
+
+This file has information about the compositions of the four stimulus lists used in the experiment.
+
+| Field     | Description                              |
+|-----------+------------------------------------------|
+| =ListID=  | ID of stimulus list (1--4)               |
+| =ItemID=  | ID of stimulus item                      |
+| =BlockID= | Unique block identifier                  |
+| =BTrial=  | Trial number within a given block        |
+| =Audio=   | Name of audio stimulus file              |
+| =Type=    | Was it a 'test' trial or 'filler' trial? |
+
+NB: main data presented in the report was from 'test' trials, not 'filler' trials.
+
+*** File =data/mouse.csv=
+
+File containing mouse cursor positions for each trial (including fillers).
+
+| Field     | Description                                      |
+|-----------+--------------------------------------------------|
+| =TrialID= | Unique trial identifier (see =data/trials.csv=)  |
+| =Msec=    | Timestamp of mouse cursor reading (milliseconds) |
+| =X=       | Horizontal cursor position                       |
+| =Y=       | Vertical cursor position                         |
+
+- Cursor positions are defined relative to a screen with 1024x768
+  resolution, where (0, 0) is the top left corner.
+
+- Timestamps are defined relative to the onset of the trial (0 ms).
+  Need to get information from =data/test_info.csv= to time-lock mouse
+  data to the speech stimulus.
+
+*** File =data/screens.csv=
+
+| Field      | Description                                           |
+|------------+-------------------------------------------------------|
+| =ItemID=   | Unique stimulus identifier (see =data/list_info.csv=) |
+| =bitmap=   | Name of bitmap file                                   |
+| =x1=       | left edge                                             |
+| =y1=       | top edge                                              |
+| =x2=       | right edge                                            |
+| =y2=       | bottom edge                                           |
+| =identity= | was the stimulus target or not                        |
+
+Information about the screen locations of the two bitmaps associated with a given stimulus identifier (=ItemID=).
+
+- All x, y values are in pixels (see =data/mouse.csv=)
+
+*** File =data/session.csv=
+
+| Field     | Description                                |
+|-----------+--------------------------------------------|
+| SessionID | Unique session identifier                  |
+| Gender    | Gender of participant                      |
+| ListID    | stimulus list presented to the participant |
+
+Information about each experimental session, including participant gender and stimulus list identifier.
+
+*** file =data/test_info.csv=
+
+| Field       | Description                                 |
+|-------------+---------------------------------------------|
+| =ListID=    | Stimulus list identifier                    |
+| =ItemID=    | Stimulus item identifier                    |
+| =FPonset=   | Onset of the filler (milliseconds)          |
+| =NPonset=   | Onset of the noun phrase (milliseconds)     |
+| =NPoffset=  | Offset of the noun phrase (milliseconds)    |
+| =FillPause= | Filled pause condition ("um" or "baseline") |
+| =Spkr=      | Speaker condition ("same" or "diff")        |
+
+Information about each 'test' trial, including condition information for the two main independent variables (=FillPause= and =Spkr=).
+
+*** file =data/trials.csv=
+
+| Field       | Description                                     |
+|-------------+-------------------------------------------------|
+| =SessionID= | unique session identifier                       |
+| =TrialID=   | unique trial identifier                         |
+| =ItemID=    | unique stimulus identifier                      |
+| =ClickMs=   | time at which participant clicked               |
+| =Clicked=   | identity of the object that participant clicked |
+
+- =ClickMs= is measured relative to the onset of the trial (0 ms)
+
+* TODO Scripts 																										 :noexport:
+
+#+BEGIN_SRC R :tangle scripts/RT.R
+  trials <- read.csv("data/trials.csv")
+#+END_SRC
