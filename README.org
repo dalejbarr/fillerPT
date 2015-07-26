@@ -6,7 +6,6 @@ This archive contains raw data for the following published study:
 
 Barr, D. J., and Seyfeddinipur, M. (2010).  The role of fillers in listener attributions for disfluency.  /Language and Cognitive Processes/, /25/, 441--455.
 
-* Descriptions
 
 | Directory  | Contents                                                  |
 |------------+-----------------------------------------------------------|
@@ -17,11 +16,11 @@ Barr, D. J., and Seyfeddinipur, M. (2010).  The role of fillers in listener attr
 | =docs/=    | Documents (participant instructions)                      |
 | =scripts/= | R Scripts for reproducing analyses                        |
 
-** Code books for files in =data= directory
+* Code books for files in =data= directory
 
-All files in the =data/= directory have ASCII encoding.
+All files in the =data/= directory use ASCII encoding.
 
-*** File =data/list_info.csv=
+** =data/list_info.csv=
 
 This file has information about the compositions of the four stimulus lists used in the experiment.
 
@@ -36,7 +35,7 @@ This file has information about the compositions of the four stimulus lists used
 
 NB: main data presented in the report was from 'test' trials, not 'filler' trials.
 
-*** File =data/mouse.csv=
+** =data/mouse.csv=
 
 File containing mouse cursor positions for each trial (including fillers).
 
@@ -54,7 +53,7 @@ File containing mouse cursor positions for each trial (including fillers).
   Need to get information from =data/test_info.csv= to time-lock mouse
   data to the speech stimulus.
 
-*** File =data/screens.csv=
+** =data/screens.csv=
 
 | Field      | Description                                           |
 |------------+-------------------------------------------------------|
@@ -70,7 +69,7 @@ Information about the screen locations of the two bitmaps associated with a give
 
 - All x, y values are in pixels (see =data/mouse.csv=)
 
-*** File =data/session.csv=
+** =data/session.csv=
 
 | Field     | Description                                |
 |-----------+--------------------------------------------|
@@ -80,7 +79,7 @@ Information about the screen locations of the two bitmaps associated with a give
 
 Information about each experimental session, including participant gender and stimulus list identifier.
 
-*** file =data/test_info.csv=
+** =data/test_info.csv=
 
 | Field       | Description                                 |
 |-------------+---------------------------------------------|
@@ -94,7 +93,7 @@ Information about each experimental session, including participant gender and st
 
 Information about each 'test' trial, including condition information for the two main independent variables (=FillPause= and =Spkr=).
 
-*** file =data/trials.csv=
+** =data/trials.csv=
 
 | Field       | Description                                     |
 |-------------+-------------------------------------------------|
@@ -106,3 +105,10 @@ Information about each 'test' trial, including condition information for the two
 
 - =ClickMs= is measured relative to the onset of the trial (0 ms)
 
+
+
+* Reproducing the analyses
+
+Use =scripts/dist_from_target.R= to recreate Figure 2 from the paper.
+
+[[file:DFT2.png]]
