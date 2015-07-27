@@ -20,7 +20,6 @@ pad_trial <- function(x, trials) {
     } else {}
     res
 }
-
 ## load in the data
 session <- read.csv("data/session.csv", fileEncoding = "ascii")
 trials <- read.csv("data/trials.csv", fileEncoding = "ascii")
