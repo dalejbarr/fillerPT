@@ -13,7 +13,6 @@ Barr, D. J., and Seyfeddinipur, M. (2010).  The role of fillers in listener attr
 | =data/=    | Tables describing experiment structure and collected data |
 | =bmps/=    | Bitmap images used as stimuli                             |
 | =wavs/=    | Audio files used as stimuli                               |
-| =docs/=    | Documents (participant instructions)                      |
 
 * Code books for files in =data= directory
 
