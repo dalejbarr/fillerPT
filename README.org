@@ -14,7 +14,6 @@ Barr, D. J., and Seyfeddinipur, M. (2010).  The role of fillers in listener attr
 | =bmps/=    | Bitmap images used as stimuli                             |
 | =wavs/=    | Audio files used as stimuli                               |
 | =docs/=    | Documents (participant instructions)                      |
-| =scripts/= | R Scripts for reproducing analyses                        |
 
 * Code books for files in =data= directory
 
@@ -109,6 +108,8 @@ Information about each 'test' trial, including condition information for the two
 
 * Reproducing the analyses
 
-Use =scripts/dist_from_target.R= to recreate Figure 2 from the paper.
+Use =dist_from_target.R= to recreate Figure 2 from the paper.
+
+Use =main_analysis.R= to reproduce Table 1 and perform inferential stats (using ANOVA, not t-test on difference scores as in paper).
 
 [[file:DFT2.png]]
